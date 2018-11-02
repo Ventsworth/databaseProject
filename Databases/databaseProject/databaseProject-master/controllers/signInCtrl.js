@@ -1,18 +1,28 @@
-angular.module('dbApp', ['ngMaterial']).controller('signInCtrl', function($scope) {
-    $scope.username = '';
-    $scope.password = '';
-    $scope.invalidLogin = false;
+angular.module('dbApp', ['ngMaterial']).controller('signInCtrl', function($scope, $mdDialog) {
+    //login data
+    $scope.userData = {};
+    $scope.userData.username = '';
+    $scope.userData.password = '';
+
+    //sign up data
+    $scope.universities = [{name: 'UCF', code: '1'}, {name: 'Valencia', code: '2'}]; //to be replaced later when DB call works
+    $scope.signUpData = {};
+    $scope.signUpData.email = '';
+    $scope.signUpData.password = '';
+    $scope.signUpData.universityID = 0;
+    $scope.signUpToggle = false;
+
+
     $scope.login = function(){
-        if($scope.username == 'stduser' && $scope.password == 'stduser'){
-            $scope.invalidLogin = false;
-            window.location.href="dashboard.html"
-        }
-        else if($scope.username == 'admin' && $scope.password == 'admin'){
-            $scope.invalidLogin = false;
-            window.location.href="dashboard.html"
-        }
-        else{
-            $scope.invalidLogin = true;
+        //send userData to database, if valid user, get permissions and go to next page
+    }
+    $scope.signUpFunc = function(){
+        $scope.signUpToggle = true;
+        console.log("hit");
+        if($scope.signUpData.uni != 0 && $scope.signUpData.email != '' && $scope.signUpData.password != ''){
+            //submit new user to db here
+            console.log("creating new user account:");
+            console.log($scope.signUpData);
         }
     }
 
