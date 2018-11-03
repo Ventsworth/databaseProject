@@ -53,9 +53,21 @@
                     </md-input-container>
                     <br>
                     <md-input-container>
+                        <label>Choose a security question:</label>
+                        <md-select ng-model="securityQSelected" required>
+                            <md-option ng-value="s" ng-repeat="s in securityQList">{{s}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <br>
+                    <md-input-container>
+                        <label>Security question response:</label>
+                        <input type="text" ng-model="signUpData.securityAns" required>
+                    </md-input-container>
+                    <br>
+                    <md-input-container>
                         <label>School:</label>
                         <md-select ng-model="signUpData.universityID" required>
-                            <md-option ng-value="x.code" ng-repeat="x in universities">{{x.name}}</md-option>
+                            <md-option ng-value="x.code" ng-repeat="x in universityList">{{x.name}}</md-option>
                     </md-input-container>
                     <md-button class="md-raised md-primary" ng-disabled="signUpForm.$invalid" ng-click="signUpFunc()" value="Submit">Submit</md-button>
                 </form>

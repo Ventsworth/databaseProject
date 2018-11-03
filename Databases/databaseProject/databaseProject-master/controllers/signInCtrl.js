@@ -5,7 +5,12 @@ angular.module('dbApp', ['ngMaterial']).controller('signInCtrl', function($scope
     $scope.userData.password = '';
 
     //sign up data
-    $scope.universities = [{name: 'UCF', code: '1'}, {name: 'Valencia', code: '2'}]; //to be replaced later when DB call works
+    $scope.universityList = [{name: 'UCF', code: '1'}, {name: 'Valencia', code: '2'}]; //to be replaced later when DB call works
+    $scope.securityQList = ["What is your favorite animal?",
+                            "What elementary school did you attend?",
+                            "What is your least favorite food?"
+                            ];
+    $scope.securityQSelected = '';
     $scope.signUpData = {};
     $scope.signUpData.email = '';
     $scope.signUpData.password = '';
@@ -15,14 +20,19 @@ angular.module('dbApp', ['ngMaterial']).controller('signInCtrl', function($scope
 
     $scope.login = function(){
         //send userData to database, if valid user, get permissions and go to next page
+        $scope.json = angular.toJson($scope.userData);
+        //get DB response
+        //if valid, jump to dashboard
     }
     $scope.signUpFunc = function(){
         $scope.signUpToggle = true;
-        console.log("hit");
         if($scope.signUpData.uni != 0 && $scope.signUpData.email != '' && $scope.signUpData.password != ''){
             //submit new user to db here
             console.log("creating new user account:");
             console.log($scope.signUpData);
+            $scope.json = angular.toJson($scope.signUpData);
+            console.log($scope.json);
+            window.location.href="signIn.html";
         }
     }
 
