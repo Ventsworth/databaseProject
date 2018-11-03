@@ -36,6 +36,7 @@ angular.module('dbApp', ['ngMaterial']).controller('DashboardCtrl', function($sc
             $scope.json = angular.toJson(dataToSend);
             var response = $http.post('/searchEvents', $scope.json)
             console.log(response);
+            $scope.searchResults = angular.fromJson(response);
         }
         if($scope.searchCat == '1'){
             //private event
@@ -57,7 +58,7 @@ angular.module('dbApp', ['ngMaterial']).controller('DashboardCtrl', function($sc
         }
         if($scope.searchCat == '3'){
             //rso org
-            //push this up to a service?
+          
         }
     }
     $scope.createEvent = function(){
