@@ -1,4 +1,4 @@
-angular.module('dbApp', ['ngMaterial']).controller('DashboardCtrl', function($scope, $mdDialog) {
+angular.module('dbApp', ['ngMaterial']).controller('DashboardCtrl', function($scope, $mdDialog, $http) {
     $scope.createEventToggle = false;
     $scope.createRSOToggle = false;
     //creating new event
@@ -30,6 +30,12 @@ angular.module('dbApp', ['ngMaterial']).controller('DashboardCtrl', function($sc
         //package for db
         if($scope.searchCat == '0'){
             //public event
+            var dataToSend = {};
+            dataToSend.name = $scope.searchParam;
+            dataToSend.cat = 0;
+            $scope.json = angular.toJson(dataToSend);
+            var response = $http.post('/searchEvents', $scope.json)
+            console.log(response);
         }
         if($scope.searchCat == '1'){
             //private event
