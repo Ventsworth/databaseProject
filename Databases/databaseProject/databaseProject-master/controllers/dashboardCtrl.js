@@ -39,9 +39,21 @@ angular.module('dbApp', ['ngMaterial']).controller('DashboardCtrl', function($sc
         }
         if($scope.searchCat == '1'){
             //private event
+            var dataToSend = {};
+            dataToSend.name = $scope.searchParam;
+            dataToSend.cat = 1;
+            $scope.json = angular.toJson(dataToSend);
+            var response = $http.post('/searchEvents', $scope.json)
+            console.log(response);
         }
         if($scope.searchCat == '2'){
             //rso event
+            var dataToSend = {};
+            dataToSend.name = $scope.searchParam;
+            dataToSend.cat = 2;
+            $scope.json = angular.toJson(dataToSend);
+            var response = $http.post('/searchEvents', $scope.json)
+            console.log(response);
         }
         if($scope.searchCat == '3'){
             //rso org

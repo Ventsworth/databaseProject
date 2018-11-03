@@ -23,6 +23,7 @@ angular.module('dbApp', ['ngMaterial']).controller('signInCtrl', function($scope
         $scope.json = angular.toJson($scope.userData);
         //get DB response
         //if valid, jump to dashboard
+        window.location.href="dashboard.html"
     }
     $scope.signUpFunc = function(){
         $scope.signUpToggle = true;
